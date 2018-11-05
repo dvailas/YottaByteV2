@@ -1,7 +1,9 @@
-
 <%if @product_count != nil%>
 <% @product_collection.each do |product| %>
   <div class="product">
+  <% if product.image.present?%>
+    <%= image_tag product.image%>
+  <%end%>
      <p>
        <b>Name: </b><%= link_to product.name, product%>
        <b>Price: </b><%= product.price%>
@@ -12,6 +14,9 @@
 <%end%>
 <%else%>
 <div class="product">
+<% if @product_collection.image.present?%>
+    <%= image_tag @product_collection.image%>
+  <%end%>
      <p>
        <b>Name: </b><%= link_to @product_collection.name, @product_collection%>
        <b>Price: </b><%= @product_collection.price%>

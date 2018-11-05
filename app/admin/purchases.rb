@@ -11,5 +11,5 @@ ActiveAdmin.register Purchase do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :datecheckedout,:subtotal,:total,:purchasedby,:status
+permit_params :subtotal,:total,:user_id,:status
 end

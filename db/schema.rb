@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_04_232154) do
+ActiveRecord::Schema.define(version: 2018_11_04_235242) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -60,8 +60,6 @@ ActiveRecord::Schema.define(version: 2018_11_04_232154) do
     t.string "image"
     t.integer "stock"
     t.string "sku"
-    t.date "dateadded"
-    t.date "lastupdated"
     t.boolean "onsale"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,7 +79,6 @@ ActiveRecord::Schema.define(version: 2018_11_04_232154) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.date "datecheckedout"
     t.decimal "subtotal"
     t.decimal "total"
     t.integer "user_id"

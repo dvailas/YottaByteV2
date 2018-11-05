@@ -6,4 +6,6 @@ class Product < ApplicationRecord
   validates :name, :category_id, :price, :stock, presence: true
   validates :price, :stock, numericality: true
 
+  mount_uploader :image, ImageUploader
+
 end

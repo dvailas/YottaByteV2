@@ -1,11 +1,2 @@
 <h1>Product#index</h1>
-<% @product_collection.each do |product|%>
-  <div class="product">
-    <p>
-      <b>Name: </b><%= link_to product.name, product%>
-      <b>Price: </b><%= product.price%>
-      <b>Description: </b><%= product.description%>
-      <b>Stock: </b><%= product.stock%>
-    </p>
-  </div>
-<%end%>
+<%= render 'product'%>

@@ -1,0 +1,22 @@
+
+<%if @product_count != nil%>
+<% @product_collection.each do |product| %>
+  <div class="product">
+     <p>
+       <b>Name: </b><%= link_to product.name, product%>
+       <b>Price: </b><%= product.price%>
+        <b>Description: </b><%= product.description%>
+        <b>Stock: </b><%= product.stock%>
+     </p>
+  </div>
+<%end%>
+<%else%>
+<div class="product">
+     <p>
+       <b>Name: </b><%= link_to @product_collection.name, @product_collection%>
+       <b>Price: </b><%= @product_collection.price%>
+        <b>Description: </b><%= @product_collection.description%>
+        <b>Stock: </b><%= @product_collection.stock%>
+     </p>
+  </div>
+<%end%>

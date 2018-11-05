@@ -3,7 +3,11 @@
     <%= image_tag product.image.url%>
   <%end%>
      <p>
+     <%if show_link %>
        <b>Name: </b><%= link_to product.name, product%>
+      <%else%>
+        <%= product.name%>
+      <%end%>
        <b>Price: </b><%= product.price%>
         <b>Description: </b><%= product.description%>
         <b>Stock: </b><%= product.stock%>

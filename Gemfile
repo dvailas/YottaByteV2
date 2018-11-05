@@ -40,6 +40,7 @@ gem 'activeadmin'
 gem 'devise'
 gem 'country_select', '~> 3.1'
 gem 'carrierwave' #Fileupload
+gem 'mini_magick' #Image Magick Ruby Bindings
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,9 +1,9 @@
 class Product < ApplicationRecord
-  belongs_to :category , optional: true
+  belongs_to :category
   has_many :purchase_products
   has_many :purchases, through: :purchase_products
 
-  validates :name, :price, :stock, presence: true
+  validates :name, :category_id, :price, :stock, presence: true
   validates :price, :stock, numericality: true
 
 end

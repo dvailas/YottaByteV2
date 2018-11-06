@@ -11,5 +11,5 @@ ActiveAdmin.register Page do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :title, :desctiption
+  permit_params :title, :description
 end

@@ -11,8 +11,15 @@
 
   <body>
     <header>
-     <h1>YottaByte</h1>
-      <div class="ui menu">
+     <h2 class="ui header">
+      <img src="/assets/Yottabyte_Logo.jpg">
+      <div class="content">
+        Yottabyte
+        <div class="sub header">Where data is sick</div>
+      </div>
+    </h2>
+
+    <div class="ui menu">
         <div class= "menu">
           <div class="item"><%= link_to 'Home',root_path%></div>
           <div class="item"><a href ="/about">About</a></div>
@@ -55,6 +62,7 @@
         </div>
         <input class="ui button"  name="commit" type="submit" value="Search" />
       </form>
+    <%render partial: 'shared/nav'%>
     </header>
 
     <%render partial: 'shared/header'%>

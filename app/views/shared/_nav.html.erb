@@ -1,0 +1,43 @@
+<div class="ui menu">
+        <div class= "menu">
+          <div class="item"><%= link_to 'Home',root_path%></div>
+          <div class="item"><a href ="/about">About</a></div>
+          <div class="ui simple dropdown item">
+            <div class="text">Hardware</div>
+              <i class="dropdown icon"></i>
+                <div class="menu">
+                 <div class="header">Categories</div>
+                 <%Category.order(:name).each do |category| %>
+                  <div class="item"><%=link_to category.name, category%></div>
+                 <%end%>
+                </div>
+          </div>
+      <div class="ui simple dropdown item">
+        <div class="text">Orders</div>
+         <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item"><%= link_to 'Orders',root_path%></div>
+            <div class="item"><%= link_to 'Checkout',root_path%></div>
+          </div>
+        </div>
+      </div>
+        <div class="item" ><a href="/sale">On Sale</a></div>
+        <div class="item" ><a href="/recent">Recently Updated</a> </div>
+        <div class="item"><a href ="/contact">Contact</a></div>
+      </div>
+      </div>
+
+      <form class="ui form" action="/result" method="get">
+        <div class="field">
+          <input type="text" id="keyword" name="keyword" placeholder="Search"/>
+        </div>
+        <div class="field">
+          <label>Categories</label>
+          <select multiple class="label ui selection fluid dropdown" id="categories" name="categories[]">
+           <%Category.order(:name).each do |category|%>
+              <option value="<%=category.id%>"><%=category.name%></option>
+            <%end%>
+          </select>
+        </div>
+        <input class="ui button"  name="commit" type="submit" value="Search" />
+      </form>

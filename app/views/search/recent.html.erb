@@ -1,2 +1,17 @@
 <h1>Search#recent</h1>
 <p>Find me in app/views/search/recent.html.erb</p>
+<div class ="ui grid">
+  <%@product_collection.each do |product|%>
+    <div class ="four wide column">
+      <% if product.image.present?%>
+        <%= image_tag product.image.url(:medium)%>
+      <%end%>
+      <p>
+       <b>Name: </b><%= link_to product.name, product%><br/>
+       <b>Price: </b><%= product.price%>
+       <b>Stock: </b><%= product.stock%>
+       <br />
+      </p>
+    </div>
+  <%end%>
+</div>

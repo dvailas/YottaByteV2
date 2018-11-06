@@ -11,7 +11,7 @@
 
   <body>
     <header>
-      <h1>YottaByte</h1>
+     <h1>YottaByte</h1>
       <div class="ui menu">
         <div class= "menu">
           <div class="item"><%= link_to 'Home',root_path%></div>
@@ -42,21 +42,19 @@
       </div>
 
       <form class="ui form" action="/result" method="get">
-      <div class="field">
-        <input type="text" id="keyword" name="keyword" placeholder="Search"/>
-      </div>
-      <div class ="ui form">
+        <div class="field">
+          <input type="text" id="keyword" name="keyword" placeholder="Search"/>
+        </div>
         <div class="field">
           <label>Categories</label>
-          <select multiple="" class="ui dropdown">
-            <%Category.order(:name).each do |category|%>
+          <select multiple class="label ui selection fluid dropdown" id="categories" name="categories[]">
+           <%Category.order(:name).each do |category|%>
               <option value="<%=category.id%>"><%=category.name%></option>
             <%end%>
           </select>
         </div>
-      </div>
-      <input class="ui button"  name="commit" type="submit" value="Search" />
-    </form>
+        <input class="ui button"  name="commit" type="submit" value="Search" />
+      </form>
     </header>
 
     <%render partial: 'shared/header'%>

@@ -10,6 +10,36 @@
   </head>
 
   <body>
+    <header>
+      <h1>YottaByte</h1>
+      <div class="ui menu">
+        <div class= "menu">
+          <div class="item"><%= link_to 'Home',root_path%></div>
+          <div class="item"><%= link_to 'About',root_path%></div>
+          <div class="ui pointing dropdown link item">
+            <div class="text">Hardware</div>
+              <i class="dropdown icon"></i>
+                <div class="menu">
+                 <div class="header">Categories</div>
+                 <%Category.order(:name).each do |category| %>
+                  <div class="item"><%=link_to category.name, category%></div>
+                 <%end%>
+                </div>
+          </div>
+      <div class="ui pointing dropdown link item">
+        <div class="text">Orders</div>
+         <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item"><%= link_to 'Orders',root_path%></div>
+            <div class="item"><%= link_to 'Checkout',root_path%></div>
+          </div>
+        </div>
+      </div>
+      <div class="item"><%= link_to 'Contact',root_path%></div>
+      </div>
+      </div>
+    </header>
+
     <%render partial: 'shared/header'%>
     <%= yield %>
   </body>

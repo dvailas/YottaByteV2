@@ -1,4 +1,5 @@
-  <div class="product">
+<div class ="ui grid">
+  <div class="three wide column">
   <% if product.image.present?%>
     <% if show_link%>
       <%= image_tag product.image.url(:medium)%>
@@ -21,3 +22,4 @@
        <%end%>
      </p>
   </div>
+</div>

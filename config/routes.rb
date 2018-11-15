@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user/create'
+  get 'user/show'
   get 'sale' => 'search#sale'
   get 'recent' =>'search#recent'
   get 'result' =>'search#result'

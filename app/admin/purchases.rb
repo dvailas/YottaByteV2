@@ -11,7 +11,7 @@ ActiveAdmin.register Purchase do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-permit_params :subtotal,:total,:user_id,:status, purchase_products_attributes:[:product_id, :purchase_id,:quantity,:price,:total, :_destroy]
+permit_params :subtotal,:total,:user_id,:status, purchase_products_attributes:[:id,:product_id, :purchase_id,:quantity,:price,:total, :_destroy]
 
   index do
     selectable_column

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'cart' => 'product#cart'
+  get 'checkout' => 'product#checkout'
   get 'sale' => 'search#sale'
   get 'recent' =>'search#recent'
   get 'result' =>'search#result'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     end
     collection do
       post :clear_cart
+      post :make_order
     end
   end
 

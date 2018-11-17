@@ -13,6 +13,9 @@
         <%= product.name%>
         <%= link_to 'Add To Cart', add_item_product_path(product), method: :post%>
       <%end%><br/>
+      <%if cart%>
+        <%= link_to 'Remove From Cart', remove_item_product_path(product), method: :post%>
+      <%end%>
        <b>Price: </b><%= product.price%>
        <b>Stock: </b><%= product.stock%>
        <br />

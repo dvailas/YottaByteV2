@@ -1,6 +1,6 @@
 <div class ="ui grid">
   <%= render partial: 'product', collection: @product_collection,
-          locals: {show_link: true}%>
+          locals: {show_link: true,cart: false}%>
 </div>
 <%= paginate @product_collection %>
 

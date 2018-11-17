@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'user/create'
-  get 'user/show'
+  get 'cart' => 'product#cart'
   get 'sale' => 'search#sale'
   get 'recent' =>'search#recent'
   get 'result' =>'search#result'
@@ -11,10 +10,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :category, only: [:show]
-  resources :user, only:[:create]
+  resources :user
   resources :product, only: [:index, :show]do
     member do
       post :add_item
+      post :remove_item
     end
     collection do
       post :clear_cart

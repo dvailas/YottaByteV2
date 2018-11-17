@@ -21,4 +21,10 @@ class ProductController < ApplicationController
     redirect_to root_url
   end
 
+  def remove_item
+    id = params[:id].to_i
+    session[:cart].delete_at(session[:cart].index(id))
+    redirect_to root_url
+  end
+
 end

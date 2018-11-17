@@ -46,6 +46,9 @@
         <div class="item" ><a href="/recent">Recently Updated</a> </div>
         <div class="item"><a href ="/contact">Contact</a></div>
       </div>
+      <p>You have visited this page <%=pluralize @visit_count, 'time'%> </p>
+      <%= debug session[:cart]%>
+      <%= link_to 'Clear Cart', clear_cart_product_index_path, method: :post%>
       </div>
 
       <form class="ui form" action="/result" method="get">

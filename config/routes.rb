@@ -11,6 +11,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :category, only: [:show]
-  resources :product, only: [:index, :show]
+  resources :user, only:[:create]
+  resources :product, only: [:index, :show]do
+    member do
+      post :add_item
+    end
+    collection do
+      post :clear_cart
+    end
+  end
+
   root to: 'product#index'
 end

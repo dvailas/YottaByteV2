@@ -11,6 +11,7 @@
        <b>Name: </b><%= link_to product.name, product%>
       <%else%>
         <%= product.name%>
+        <%= link_to 'Add To Cart', add_item_product_path(product), method: :post%>
       <%end%><br/>
        <b>Price: </b><%= product.price%>
        <b>Stock: </b><%= product.stock%>

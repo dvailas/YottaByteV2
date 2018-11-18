@@ -1,6 +1,5 @@
 class UserController < ApplicationController
   def new
-
   end
 
   def create
@@ -18,9 +17,4 @@ class UserController < ApplicationController
 
   def show
   end
-
-  def login
-  end
-
-
 end

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def initialize_session
     session[:visit_count] ||= 0
     session[:cart] ||= []
-    session[:user] ||= ''
+    session[:user] ||= nil
   end
 
   def load_and_increment_visit_count

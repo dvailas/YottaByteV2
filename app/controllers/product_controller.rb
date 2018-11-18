@@ -19,6 +19,9 @@ class ProductController < ApplicationController
   end
 
   def checkout
+    if session[:user] == nil
+      redirect_to '/login'
+    end
     @subtotal = calculate_total()
     @prov = Province.first()
   end

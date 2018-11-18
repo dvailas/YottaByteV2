@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   get 'cart' => 'product#cart'
   get 'checkout' => 'product#checkout'
+  get 'login' => 'user#login'
   get 'sale' => 'search#sale'
   get 'recent' =>'search#recent'
   get 'result' =>'search#result'

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :initialize_session
   before_action :load_and_increment_visit_count
   before_action :load_cart
+  before_action :load_user
 
 
   def clear_cart
@@ -12,6 +13,7 @@ class ApplicationController < ActionController::Base
   def initialize_session
     session[:visit_count] ||= 0
     session[:cart] ||= []
+    session[:user] ||= ''
   end
 
   def load_and_increment_visit_count
@@ -21,5 +23,9 @@ class ApplicationController < ActionController::Base
 
   def load_cart
     @cart = Product.find(session[:cart])
+  end
+
+  def load_user
+    @user = session[:user]
   end
 end

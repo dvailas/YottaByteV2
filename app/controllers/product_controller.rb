@@ -1,4 +1,5 @@
 class ProductController < ApplicationController
+  require 'date'
 
   def index
     @product_collection = Product.order(:name).page(params[:page]).per(5)
@@ -18,8 +19,7 @@ class ProductController < ApplicationController
   end
 
   def checkout
-    @checkout = Product.find(session[:cart])
-    @subtotal = @checkout.sum(&:price)
+    @subtotal = calculate_total()
     @prov = Province.first()
   end
 
@@ -30,8 +30,26 @@ class ProductController < ApplicationController
   end
 
   def make_order
-
+    @purchase = Purchase.new(:user => User.first(),
+                             :user_id => User.first().id,
+                             :status => "Purchased",
+                             :subtotal => calculate_total(),
+                             :total=> calculate_total() + (calculate_total() * 0.07))
+    @cart.each do |c|
+      PurchaseProduct.new(:product => c,
+                           :product_id => c.id,
+                           :purchase => @purchase,
+                           :purchase_id => @purchase.id,
+                           :quantity => 1,
+                           :price => c.price,
+                           :total => c.price * 1).save
+    end
     redirect_to root_url
+  end
+
+  def calculate_total
+    @checkout = Product.find(session[:cart])
+    return @checkout.sum(&:price)
   end
 
 end

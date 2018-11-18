@@ -1,7 +1,7 @@
 <h1>User#create</h1>
 <p>Find me in app/views/user/create.html.erb</p>
 
-<%= form_for @user do |form| %>
+<%= form_with scope: :user, url:user_index_path,local: true do |form| %>
   <p>
     <%= form.label :name %><br>
     <%= form.text_field :name %>
@@ -36,12 +36,10 @@
     <%= form.label :city %><br>
     <%= form.text_field :city %>
   </p>
-  <p>
-    <%= form.label :province %><br>
-    <%= form.text_field :province %>
-  </p>
+  <%= form.collection_select :province, Province.all, :id, :name%>
 
   <p>
     <%= form.submit %>
   </p>
 <% end %>
+

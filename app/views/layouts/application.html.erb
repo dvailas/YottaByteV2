@@ -48,7 +48,7 @@
       </div>
       <%= link_to "Log out", logout_path, method: :delete %>
       <p>You have visited this page <%=pluralize @visit_count, 'time'%> </p>
-      <%= debug session[:cart]%>
+      <%= debug session[:cart].inspect%>
       <%= debug session[:user]%>
       <%= link_to 'Clear Cart', clear_cart_product_index_path, method: :post%>
       </div>

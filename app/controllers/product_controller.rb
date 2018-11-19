@@ -12,8 +12,18 @@ class ProductController < ApplicationController
 
   def add_item
     id = params[:id].to_i
-    unless session[:cart].include?(id)
-      session[:cart]  << id
+    ids =[]
+    session[:cart].each do |c|
+      ids << c["id"]
+    end
+    unless ids.include?(id)
+      session[:cart]  << {:id => id, :qty => params[:qty]}
+    else
+      session[:cart].each do |c|
+        if c["id"] == id
+           c["qty"] = params[:qty]
+        end
+      end
     end
     redirect_to root_url
   end
@@ -33,26 +43,28 @@ class ProductController < ApplicationController
   end
 
   def make_order
-    @purchase = Purchase.new(:user => User.first(),
-                             :user_id => User.first().id,
+    i = 0
+    @prov = Province.find(session[:user]["province_id"])
+    @purchase = Purchase.new(:user => @user,
+                             :user_id => @user.id,
                              :status => "Purchased",
                              :subtotal => calculate_total(),
-                             :total=> calculate_total() + (calculate_total() * 0.07))
+                             :total=> calculate_total() + (calculate_total() * @prov.GST))
     @cart.each do |c|
       PurchaseProduct.new(:product => c,
                            :product_id => c.id,
                            :purchase => @purchase,
                            :purchase_id => @purchase.id,
-                           :quantity => 1,
+                           :quantity => session[:cart][i]["qty"],
                            :price => c.price,
                            :total => c.price * 1).save
+          i = i +1
     end
     redirect_to root_url
   end
 
   def calculate_total
-    @checkout = Product.find(session[:cart])
-    return @checkout.sum(&:price)
+    return @cart.sum(&:price)
   end
 
 end

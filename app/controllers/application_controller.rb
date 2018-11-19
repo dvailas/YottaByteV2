@@ -22,10 +22,14 @@ class ApplicationController < ActionController::Base
   end
 
   def load_cart
-    @cart = Product.find(session[:cart])
+    @numbers = []
+    session[:cart].each do |c|
+      @numbers << c["id"]
+    end
+    @cart = Product.find(@numbers)
   end
 
   def load_user
-    @user = session[:user]
+    @user = User.find(session[:user]["id"])
   end
 end

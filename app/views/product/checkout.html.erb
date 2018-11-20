@@ -1,5 +1,8 @@
-<p>Subtotal: $<%=@subtotal%>
-<p>Total: $<%=@subtotal +(@subtotal*@prov.GST) %>
+<h1>Checkout</h1>
+<h4>Subtotal: $<%=@subtotal%></h4>
+<h2>Taxes:</h2>
+<h4>GST: $<%=(@subtotal*@prov.GST) %></h4>
+<h3>Total: $<%=@subtotal +(@subtotal*@prov.GST) %></h3>
 <%= link_to 'Make Purchase', make_order_product_index_path, method: :post%>
 <div class ="ui grid">
   <%= render partial: 'product', collection: @cart,

@@ -32,13 +32,22 @@ class ProductController < ApplicationController
     if session[:user] == nil
       redirect_to '/login'
     end
+    @i = 0
     @subtotal = calculate_total()
     @prov = Province.first()
   end
 
   def remove_item
     id = params[:id].to_i
-    session[:cart].delete_at(session[:cart].index(id))
+    i = 0
+    session[:cart].each do |c|
+      if c["id"] == id
+        break
+      end
+      i = i +1
+    end
+    puts i
+    session[:cart].delete_at(i)
     redirect_to root_url
   end
 
@@ -64,7 +73,13 @@ class ProductController < ApplicationController
   end
 
   def calculate_total
-    return @cart.sum(&:price)
+    sum = 0
+    i = 0
+    @cart.each do |c|
+      sum = sum + c.price * session[:cart][i]["qty"].to_i
+      i = i +1
+    end
+    return sum
   end
 
 end

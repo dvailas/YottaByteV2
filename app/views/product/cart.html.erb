@@ -1,5 +1,5 @@
 <h1>Shopping Cart</h1>
-<div class ="ui grid">
+<div class ="ui grid" id="grid">
   <%= render partial: 'product', collection: @cart,
           locals: {show_link: true,cart: true,checkout:false}%>
 </div>

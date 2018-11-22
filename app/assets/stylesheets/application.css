@@ -13,3 +13,130 @@
  *= require_tree .
  *= require_self
  */
+html
+{
+  height: 100%;
+}
+#keyword, #categories
+{
+  position: relative;
+  width: 150px;
+  height: 10px;
+}
+#commit
+{
+  display: block;
+  margin-bottom: 14px;
+}
+#column
+{
+  width: 20% !important;
+  margin: 5px;
+  border: solid 2px #191919;
+  border-radius: 16px;
+  background-color: #4682B4!important;
+}
+#grid
+{
+  display: block;
+  position: relative;
+  margin-bottom: 10px;
+  top:20px;
+  left:15px;
+}
+header{
+  background-color: #4682B4;
+}
+#searchForm
+{
+  display: inline-grid;
+  position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+}
+body{
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  background-color: #DCDCDC;
+  font-family:"Helvetica";
+  min-height: 100%;
+}
+#title
+{
+  font-family:"Helvetica";
+}
+.pagination
+{
+  display: block;
+  position: relative;
+  left:12px;
+  top: 5px;
+}
+#menu
+{
+  box-shadow: 2px 2px 8px 3px #888888;
+}
+#singleItem
+{
+  float: right;
+  width: 70%;
+  bottom: 580px;
+}
+#singleItem:link
+{
+  color: black;
+}
+.product_image
+{
+  position: relative;
+  left:45px;
+}
+.product_link
+{
+  color: black;
+}
+footer
+{
+  margin-top: 8px;
+  display: flex;
+  position: relative;
+
+  right: 0;
+  left: 0;
+  background-color: #4682B4;
+}
+#footer_title
+{
+  display: block;
+}
+#footer_nav a{
+  color: black;
+}
+#footer_nav
+{
+  display: inline;
+  position: relative;
+  left: 50px;
+  top: 50px;
+}
+#footer_nav div{
+  display: inline;
+  font-family: "Helvetica";
+  width: 10%;
+}
+#footer_nav div:nth-child(4){
+  display: block;
+}
+#footer_nav p{
+  position: relative;
+  float: right;
+  width: 50%;
+  right: 100px;
+  bottom: 50px;
+
+}

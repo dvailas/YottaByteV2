@@ -11,71 +11,30 @@
 
   <body>
     <header>
-     <h2 class="ui header">
-      <img src="/assets/Yottabyte_Logo.jpg">
-      <div class="content">
-        Yottabyte
-        <div class="sub header">Where data is sick</div>
-      </div>
-    </h2>
-
-    <div class="ui menu">
-        <div class= "menu">
-          <div class="item"><%= link_to 'Home',root_path%></div>
-          <div class="item"><a href ="/about">About</a></div>
-          <div class="ui simple dropdown item">
-            <div class="text">Hardware</div>
-              <i class="dropdown icon"></i>
-                <div class="menu">
-                 <div class="header">Categories</div>
-                 <%Category.order(:name).each do |category| %>
-                  <div class="item"><%=link_to category.name, category%></div>
-                 <%end%>
-                </div>
-          </div>
-      <div class="ui simple dropdown item">
-        <div class="text">Orders</div>
-         <i class="dropdown icon"></i>
-          <div class="menu">
-            <div class="item"><a href="/cart">Shopping Cart</a></div>
-            <div class="item"><a href="/checkout">Checkout</a></div>
-          </div>
-        </div>
-      </div>
-        <div class="item" ><a href="/sale">On Sale</a></div>
-        <div class="item" ><a href="/recent">Recently Updated</a> </div>
-        <div class="item"><a href ="/contact">Contact</a></div>
-        <div class = "item">
-          <%if session[:user] != nil%>
-            Hello, <%=session[:user]["name"]%> <%= link_to "Log out", logout_path, method: :delete %>
-          <%else %>
-            <a href="/login">Login</a>
-          <%end%>
-        </div>
-        <div class ="item">
-          <%= link_to 'Clear Cart', clear_cart_product_index_path, method: :post%>
-        </div>
-      </div>
-      </div>
-
-      <form class="ui form" action="/result" method="get">
-        <div class="field">
-          <input type="text" id="keyword" name="keyword" placeholder="Search"/>
-        </div>
-        <div class="field">
-          <label>Categories</label>
-          <select multiple class="label ui selection fluid dropdown" id="categories" name="categories[]">
-           <%Category.order(:name).each do |category|%>
-              <option value="<%=category.id%>"><%=category.name%></option>
-            <%end%>
-          </select>
-        </div>
-        <input class="ui button"  name="commit" type="submit" value="Search" />
-      </form>
-    <%render partial: 'shared/nav'%>
+      <img src="/assets/Yottabyte_Logo_Horizontal.png" height="50" width="200">
+    <%= render partial: 'shared/nav'%>
     </header>
 
-    <%render partial: 'shared/header'%>
     <%= yield %>
+  <!-- <footer>
+      <h2 class="ui header" id="footer_title">
+        <img src="/assets/Yottabyte_Logo.jpg">
+        <div class="content" id="title">
+          Yottabyte
+          <div class="sub header" id="title">Where data is sick</div>
+        </div>
+      </h2>
+      <nav clas="ui secondary pointing menu" id="footer_nav">
+        <div class="item"><%= link_to 'Home',root_path%></div>
+        <div class="item"><a href ="/about" >About</a></div>
+        <div class="item"><a href="/cart">Shopping Cart</a></div>
+        <div id="break"> </div>
+        <div class="item"><a href="/checkout">Checkout</a></div>
+        <div class="item" ><a href="/sale">On Sale</a></div>
+        <div class="item" ><a href="/recent">Recently Updated</a></div>
+        <div class="item"><a href ="/contact">Contact</a></div>
+      </nav>
+      <p>Yottabyte is not responsible for misprints or errors on product prices or information, for more information please see our Site Terms of Use. ©1996-2018 Yottabyte, Inc. All Rights Reserved. - W01</p>
+    </footer>-->
   </body>
 </html>

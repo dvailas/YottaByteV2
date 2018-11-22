@@ -1,4 +1,17 @@
-<div class="ui menu">
+<form id="searchForm" class="ui form" action="/result" method="get">
+  <div class="field">
+    <input type="text" id="keyword" name="keyword" placeholder="Search"/>
+  </div>
+  <div class="field">
+    <select multiple class="label ui selection fluid dropdown" id="categories" name="categories[]">
+      <%Category.order(:name).each do |category|%>
+        <option value="<%=category.id%>"><%=category.name%></option>
+      <%end%>
+    </select>
+  </div>
+  <!--<input class="ui button" id="commit" name="commit" type="submit" value="Search" /> --->
+</form>
+<div class="ui menu" id="menu">
         <div class= "menu">
           <div class="item"><%= link_to 'Home',root_path%></div>
           <div class="item"><a href ="/about">About</a></div>
@@ -16,28 +29,25 @@
         <div class="text">Orders</div>
          <i class="dropdown icon"></i>
           <div class="menu">
-            <div class="item"><%= link_to 'Orders',root_path%></div>
-            <div class="item"><%= link_to 'Checkout',root_path%></div>
+            <div class="item"><a href="/cart">Shopping Cart</a></div>
+            <div class="item"><a href="/checkout">Checkout</a></div>
           </div>
         </div>
       </div>
         <div class="item" ><a href="/sale">On Sale</a></div>
         <div class="item" ><a href="/recent">Recently Updated</a> </div>
         <div class="item"><a href ="/contact">Contact</a></div>
+        <div class ="item">
+          <%= link_to 'Clear Cart', clear_cart_product_index_path, method: :post%>
+        </div>
+        <div id="login" class="item">
+          <%if session[:user] != nil%>
+            Hello, <%=session[:user]["name"]%> <%= link_to "Log out", logout_path, method: :delete %>
+          <%else %>
+            <a href="/login">Login</a> / <a href="/user/new">Register</a>
+          <%end%>
+        </div>
       </div>
       </div>
 
-      <form class="ui form" action="/result" method="get">
-        <div class="field">
-          <input type="text" id="keyword" name="keyword" placeholder="Search"/>
-        </div>
-        <div class="field">
-          <label>Categories</label>
-          <select multiple class="label ui selection fluid dropdown" id="categories" name="categories[]">
-           <%Category.order(:name).each do |category|%>
-              <option value="<%=category.id%>"><%=category.name%></option>
-            <%end%>
-          </select>
-        </div>
-        <input class="ui button"  name="commit" type="submit" value="Search" />
-      </form>
+

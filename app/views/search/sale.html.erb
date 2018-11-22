@@ -1,9 +1,8 @@
-<h1>Search#sale</h1>
-<p>Find me in app/views/search/sale.html.erb</p>
+<h1>Sale</h1>
 
-<div class ="ui grid">
+<div class ="ui grid" id="grid">
   <%@product_collection.each do |product|%>
-    <div class ="four wide column">
+    <div class ="four wide column" id="column">
       <% if product.image.present?%>
         <%= image_tag product.image.url(:medium)%>
       <%end%>

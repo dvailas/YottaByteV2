@@ -5,7 +5,7 @@
 <h4>PST: $<%=(@subtotal*@prov.PST).round(2) %></h4>
 <h4>HST: $<%=(@subtotal*@prov.HST).round(2) %></h4>
 <h3>Total: $<%=(@subtotal +(@subtotal*@prov.GST)).round(2) %></h3>
-<%= link_to 'Make Purchase', make_order_product_index_path, method: :post%>
+<p><%= link_to 'Make Purchase', make_order_product_index_path, method: :post%></p>
 <div class ="ui grid">
   <%= render partial: 'product', collection: @cart,
           locals: {show_link: true,cart: true,checkout:true}%>

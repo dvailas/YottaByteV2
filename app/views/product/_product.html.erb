@@ -37,7 +37,7 @@
           <% end %>
     </div>
   </div>
-  <%= link_to 'Remove From Cart', remove_item_product_path(product), method: :post%>
+  <%= link_to 'Remove From Cart', remove_item_product_path(product),:class =>"product_link", method: :post%>
 <%end%>
   <b>Price: $</b><%= product.price%>
   <% if !cart%>

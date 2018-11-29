@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'charges/new'
+  get 'charges/create'
   get 'sessions/new'
   get 'cart' => 'product#cart'
   get 'checkout' => 'product#checkout'
@@ -26,6 +28,8 @@ Rails.application.routes.draw do
       post :make_order
     end
   end
+
+  resources :charges, only: [:new, :create]
 
   root to: 'product#index'
 end

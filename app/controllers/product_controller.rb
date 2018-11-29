@@ -57,12 +57,14 @@ class ProductController < ApplicationController
 
   def make_order
     i = 0
+
     @prov = Province.find(session[:user]["province_id"])
     @purchase = Purchase.new(:user => @user,
                              :user_id => @user.id,
                              :status => "Purchased",
                              :subtotal => calculate_total().round(2),
                              :total=> (calculate_total() + (calculate_total() * @prov.GST) + (calculate_total() * @prov.HST) + (calculate_total() * @prov.PST)).round(2))
+    session[:purchase] = @purchase
     @cart.each do |c|
       PurchaseProduct.new(:product => c,
                            :product_id => c.id,
@@ -73,7 +75,7 @@ class ProductController < ApplicationController
                            :total => c.price * 1).save
           i = i +1
     end
-    redirect_to root_url
+    redirect_to charges_new_path
   end
 
   def calculate_total

@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def sale
-    @product_collection = Product.where("onsale <> 'false'")
+    @product_collection = Product.where("onsale <> 'false'").page(params[:page]).per(5)
   end
 
   def result
@@ -8,16 +8,16 @@ class SearchController < ApplicationController
       @cat = params[:categories]
       @product_collection = Product.where("name LIKE '%" + params[:keyword] + "%' OR
                                           description LIKE '%" + params[:keyword] + "%' AND
-                                          category_id IN (" + @cat.join(",") + ")"  )
+                                          category_id IN (" + @cat.join(",") + ")"  ).page(params[:page]).per(5)
 
     else
       @product_collection = Product.where("name LIKE '%" + params[:keyword] + "%' OR
-        description LIKE '%" + params[:keyword] + "%'")
+        description LIKE '%" + params[:keyword] + "%'").page(params[:page]).per(5)
     end
   end
 
   def recent
-    @product_collection = Product.where("updated_at >= ?", Date.today()-7)
+    @product_collection = Product.where("updated_at >= ?", Date.today()-7).page(params[:page]).per(5)
   end
 
   def about
